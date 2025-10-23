@@ -1,7 +1,10 @@
 # Étape 1: Build des dépendances PHP
-FROM composer:2.6 AS composer-build
+FROM php:8.3-cli AS composer-build
 
 WORKDIR /app
+
+# Installer Composer
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
 # Copier les fichiers de dépendances
 COPY composer.json composer.lock ./
