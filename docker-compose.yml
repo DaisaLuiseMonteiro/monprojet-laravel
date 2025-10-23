@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=switchback.proxy.rlwy.net
+      - DB_PORT=28669
+      - DB_DATABASE=railway
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=TRfjXKrQBsoskHFBDKmXRHnLkqBwPOpq
