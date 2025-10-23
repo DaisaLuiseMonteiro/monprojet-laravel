@@ -3,6 +3,9 @@ FROM php:8.3-alpine AS composer-build
 
 WORKDIR /app
 
+# Installer les outils nécessaires pour Composer
+RUN apt-get update && apt-get install -y unzip git && rm -rf /var/lib/apt/lists/*
+
 # Installer Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
