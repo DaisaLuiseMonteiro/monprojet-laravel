@@ -9,6 +9,9 @@ COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 # Copier les fichiers de dépendances
 COPY composer.json composer.lock ./
 
+# Installer les outils nécessaires pour Composer
+RUN apk add --no-cache unzip git
+
 # Installer les dépendances PHP sans scripts post-install
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --no-scripts
 
