@@ -1,5 +1,5 @@
 # Étape 1: Build des dépendances PHP
-FROM php:8.3-cli AS composer-build
+FROM php:8.3-alpine AS composer-build
 
 WORKDIR /app
 
