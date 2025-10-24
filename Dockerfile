@@ -1,13 +1,7 @@
 # Étape 1: Build des dépendances PHP
-FROM php:8.3-cli AS composer-build
+FROM composer:2.6 AS composer-build
 
 WORKDIR /app
-
-# Installer les outils nécessaires pour Composer
-RUN apt-get update && apt-get install -y unzip git && rm -rf /var/lib/apt/lists/*
-
-# Installer Composer
-COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
 # Copier les fichiers de dépendances
 COPY composer.json composer.lock ./
@@ -41,8 +35,26 @@ RUN mkdir -p storage/framework/{cache,data,sessions,testing,views} \
     && chown -R laravel:laravel /var/www/html \
     && chmod -R 775 storage bootstrap/cache
 
-# Copier le fichier .env.render vers .env
-RUN cp .env.render .env
+# Créer un fichier .env minimal pour le build
+RUN echo "APP_NAME=Laravel" > .env && \
+    echo "APP_ENV=production" >> .env && \
+    echo "APP_KEY=" >> .env && \
+    echo "APP_DEBUG=false" >> .env && \
+    echo "APP_URL=http://localhost" >> .env && \
+    echo "" >> .env && \
+    echo "LOG_CHANNEL=stack" >> .env && \
+    echo "LOG_LEVEL=error" >> .env && \
+    echo "" >> .env && \
+    echo "DB_CONNECTION=pgsql" >> .env && \
+    echo "DB_HOST=\${DB_HOST}" >> .env && \
+    echo "DB_PORT=\${DB_PORT}" >> .env && \
+    echo "DB_DATABASE=\${DB_DATABASE}" >> .env && \
+    echo "DB_USERNAME=\${DB_USERNAME}" >> .env && \
+    echo "DB_PASSWORD=\${DB_PASSWORD}" >> .env && \
+    echo "" >> .env && \
+    echo "CACHE_DRIVER=file" >> .env && \
+    echo "SESSION_DRIVER=file" >> .env && \
+    echo "QUEUE_CONNECTION=sync" >> .env
 
 # Changer les permissions du fichier .env pour l'utilisateur laravel
 RUN chown laravel:laravel .env
@@ -56,14 +68,14 @@ RUN php artisan key:generate --force && \
 USER root
 
 # Copier le script d'entrée
-COPY start.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/start.sh
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Passer à l'utilisateur non-root
 USER laravel
 
-# Exposer le port 10000
-EXPOSE 10000
+# Exposer le port 8000
+EXPOSE 8000
 
 # Commande par défaut
-CMD ["/usr/local/bin/start.sh", "php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
