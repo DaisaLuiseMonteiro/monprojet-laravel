@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: monprojet-laravel
+    name: monprojet-laravel-13
     runtime: docker
     buildCommand: docker build -t monprojet-laravel .
     startCommand: docker run -p 10000:10000 monprojet-laravel
