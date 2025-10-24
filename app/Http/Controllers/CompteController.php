@@ -19,7 +19,7 @@ class CompteController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/comptes",
+     *     path="/monteiro.daisa/v1/comptes",
      *     summary="List all accounts",
      *     tags={"Accounts"},
      *     security={{"bearerAuth":{}}},
@@ -48,7 +48,7 @@ class CompteController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/v1/comptes",
+     *     path="/monteiro.daisa/v1/comptes",
      *     summary="Create a new account",
      *     tags={"Accounts"},
      *     security={{"bearerAuth":{}}},
@@ -98,7 +98,7 @@ class CompteController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/v1/comptes/{compte}",
+     *     path="/monteiro.daisa/v1/comptes/{compte}",
      *     summary="Get a specific account",
      *     tags={"Accounts"},
      *     security={{"bearerAuth":{}}},
@@ -130,7 +130,7 @@ class CompteController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/v1/comptes/{compte}",
+     *     path="/monteiro.daisa/v1/comptes/{compte}",
      *     summary="Update an account",
      *     tags={"Accounts"},
      *     security={{"bearerAuth":{}}},
@@ -172,7 +172,7 @@ class CompteController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/v1/comptes/{compte}",
+     *     path="/monteiro.daisa/v1/comptes/{compte}",
      *     summary="Delete an account",
      *     tags={"Accounts"},
      *     security={{"bearerAuth":{}}},

@@ -12,13 +12,13 @@
         }
     ],
     "paths": {
-        "{L5_SWAGGER_CONST_API_BASE_PATH}/clients": {
+        "/monteiro.daisa/v1/clients": {
             "get": {
                 "tags": [
                     "Clients"
                 ],
                 "summary": "List all clients",
-                "operationId": "a11db9fd8bcb556e2b6c8abfc9e4e1f9",
+                "operationId": "9414da5b156ac395819f7a2221efd353",
                 "parameters": [
                     {
                         "name": "search",
@@ -76,7 +76,7 @@
                     "Clients"
                 ],
                 "summary": "Create a new client",
-                "operationId": "3db9c6c2ed83d3cc0b0b7f31b68d8883",
+                "operationId": "0a8ef17787c49d6a7e0fc36a315eac00",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -197,13 +197,13 @@
                 ]
             }
         },
-        "{L5_SWAGGER_CONST_API_BASE_PATH}/clients/{client}": {
+        "/monteiro.daisa/v1/clients/{client}": {
             "get": {
                 "tags": [
                     "Clients"
                 ],
                 "summary": "Get a specific client",
-                "operationId": "e2a393d13c634dcf22795691ad65e158",
+                "operationId": "28d660d7b6f6fe6f1d873dd494034ceb",
                 "parameters": [
                     {
                         "name": "client",
@@ -272,7 +272,7 @@
                     "Clients"
                 ],
                 "summary": "Update a client",
-                "operationId": "04b97a10f0f39a12f5ea33ea99de86f2",
+                "operationId": "48321b613d515faeea20ea705f98b85d",
                 "parameters": [
                     {
                         "name": "client",
@@ -358,7 +358,7 @@
                     "Clients"
                 ],
                 "summary": "Delete a client",
-                "operationId": "d707ca682a515c5f27d32e9b5d967bc3",
+                "operationId": "faf25c4746ce71b5652d324f0ec18f57",
                 "parameters": [
                     {
                         "name": "client",
@@ -400,13 +400,13 @@
                 ]
             }
         },
-        "/api/v1/comptes": {
+        "/monteiro.daisa/v1/comptes": {
             "get": {
                 "tags": [
                     "Accounts"
                 ],
                 "summary": "List all accounts",
-                "operationId": "c09c55b936e3520140768760edfa911e",
+                "operationId": "a7e8ee179b29bc79180ab71f66174554",
                 "responses": {
                     "200": {
                         "description": "Accounts retrieved successfully",
@@ -446,7 +446,7 @@
                     "Accounts"
                 ],
                 "summary": "Create a new account",
-                "operationId": "aa399240cc7c1f272aa92fe6d6b4e162",
+                "operationId": "a26c15c54b0412bd29c24d1fe5b9a24d",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -537,13 +537,13 @@
                 ]
             }
         },
-        "/api/v1/comptes/{compte}": {
+        "/monteiro.daisa/v1/comptes/{compte}": {
             "get": {
                 "tags": [
                     "Accounts"
                 ],
                 "summary": "Get a specific account",
-                "operationId": "6cc275e16c94b0f4fbaa679a5a88c024",
+                "operationId": "835e54a353da3a76839981a84a25e3ce",
                 "parameters": [
                     {
                         "name": "compte",
@@ -592,7 +592,7 @@
                     "Accounts"
                 ],
                 "summary": "Update an account",
-                "operationId": "881524c4e361b7bb51f63551a40ab379",
+                "operationId": "5e7f83e211239820684e8661e153c92e",
                 "parameters": [
                     {
                         "name": "compte",
@@ -678,7 +678,7 @@
                     "Accounts"
                 ],
                 "summary": "Delete an account",
-                "operationId": "8d5cc7a1615f764ffa62bac743ca01fc",
+                "operationId": "91a49f8a7e259a7ff755cece11214464",
                 "parameters": [
                     {
                         "name": "compte",
