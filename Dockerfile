@@ -74,8 +74,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 # Passer à l'utilisateur non-root
 USER laravel
 
-# Exposer le port 8000
-EXPOSE 8000
+# Exposer le port 10000
+EXPOSE 10000
 
 # Commande par défaut
-CMD ["php", "artisan", "serve"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
