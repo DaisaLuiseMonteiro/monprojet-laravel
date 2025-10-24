@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000",
+            "url": "https://monprojet-laravel-13.onrender.com",
             "description": "API server"
         }
     ],
