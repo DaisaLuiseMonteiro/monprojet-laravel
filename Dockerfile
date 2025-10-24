@@ -1,16 +1,10 @@
 # Étape 1: Build des dépendances PHP
-FROM php:8.3-cli AS composer-build
+FROM composer:2.6 AS composer-build
 
 WORKDIR /app
 
-# Installer Composer
-COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
-
 # Copier les fichiers de dépendances
 COPY composer.json composer.lock ./
-
-# Installer les outils nécessaires pour Composer
-RUN apk add --no-cache unzip git
 
 # Installer les dépendances PHP sans scripts post-install
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --no-scripts
@@ -74,14 +68,14 @@ RUN php artisan key:generate --force && \
 USER root
 
 # Copier le script d'entrée
-COPY start.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/start.sh
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Passer à l'utilisateur non-root
 USER laravel
 
-# Exposer le port 10000
-EXPOSE 10000
+# Exposer le port 8000
+EXPOSE 8000
 
 # Commande par défaut
-CMD ["/usr/local/bin/start.sh", "php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
