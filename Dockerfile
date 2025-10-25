@@ -35,7 +35,7 @@ RUN mkdir -p storage/framework/{cache,data,sessions,testing,views} \
     && chown -R laravel:laravel /var/www/html \
     && chmod -R 775 storage bootstrap/cache
 
-# Créer un fichier .env minimal pour le build
+# Créer un fichier .env minimal pour le build (sera remplacé à l'exécution)
 RUN echo "APP_NAME=Laravel" > .env && \
     echo "APP_ENV=production" >> .env && \
     echo "APP_KEY=" >> .env && \
@@ -59,12 +59,9 @@ RUN echo "APP_NAME=Laravel" > .env && \
 # Changer les permissions du fichier .env pour l'utilisateur laravel
 RUN chown laravel:laravel .env
 
-# Générer la clé d'application et optimiser
+# Générer seulement la clé d'application pendant le build
 USER laravel
-RUN php artisan key:generate --force && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
+RUN php artisan key:generate --force
 USER root
 
 # Copier le script d'entrée
