@@ -54,7 +54,8 @@ RUN echo "APP_NAME=Laravel" > .env && \
     echo "" >> .env && \
     echo "CACHE_DRIVER=file" >> .env && \
     echo "SESSION_DRIVER=file" >> .env && \
-    echo "QUEUE_CONNECTION=sync" >> .env
+    echo "QUEUE_CONNECTION=sync" >> .env && \
+    echo "L5_SWAGGER_CONST_HOST=\${L5_SWAGGER_CONST_HOST}" >> .env
 
 # Changer les permissions du fichier .env pour l'utilisateur laravel
 RUN chown laravel:laravel .env
