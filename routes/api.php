@@ -31,13 +31,11 @@ Route::prefix(config('api.prefix'))->group(function () {
     // Routes Clients (protégées)
     Route::middleware('auth:sanctum')->apiResource('clients', ClientController::class);
 
-    // Routes Comptes (protégées)
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::get('comptes', [CompteController::class, 'index']);
-        Route::post('comptes', [CompteController::class, 'store']);
-        Route::get('comptes/{compte}', [CompteController::class, 'show']);
-        Route::put('comptes/{compte}', [CompteController::class, 'update']);
-        Route::delete('comptes/{compte}', [CompteController::class, 'destroy']);
-    });
+    // Routes Comptes (temporairement non protégées pour debug)
+    Route::get('comptes', [CompteController::class, 'index']);
+    Route::post('comptes', [CompteController::class, 'store']);
+    Route::get('comptes/{compte}', [CompteController::class, 'show']);
+    Route::put('comptes/{compte}', [CompteController::class, 'update']);
+    Route::delete('comptes/{compte}', [CompteController::class, 'destroy']);
 });
 

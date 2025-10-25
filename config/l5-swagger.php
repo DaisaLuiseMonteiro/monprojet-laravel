@@ -312,10 +312,16 @@ return [
          * Constants which can be used in annotations
          */
         'constants' => [
-            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://127.0.0.1:8000'),
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'https://monprojet-laravel-13.onrender.com'),
             'L5_SWAGGER_CONST_API_BASE_PATH' => env('API_BASE_PATH', '/monteiro.daisa/v1'),
             'API_BASE_PATH' => env('API_BASE_PATH', '/monteiro.daisa/v1'),
             'BASE_PATH' => env('API_BASE_PATH', '/monteiro.daisa/v1'),
+        ],
+          'servers' => [
+            [
+                'url' => env('APP_URL', 'https://monprojet-laravel-13.onrender.com'),
+                'description' => 'Render API Server',
+            ],
         ],
     ],
 ];
