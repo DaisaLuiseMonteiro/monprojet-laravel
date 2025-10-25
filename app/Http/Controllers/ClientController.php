@@ -33,7 +33,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Get(
-     *     path="{L5_SWAGGER_CONST_API_BASE_PATH}/clients",
+     *     path="/monteiro.daisa/v1/clients",
      *     summary="List all clients",
      *     tags={"Clients"},
      *     security={{"bearerAuth":{}}},
@@ -81,7 +81,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Post(
-     *     path="{L5_SWAGGER_CONST_API_BASE_PATH}/clients",
+     *     path="/monteiro.daisa/v1/clients",
      *     summary="Create a new client",
      *     tags={"Clients"},
      *     security={{"bearerAuth":{}}},
@@ -132,7 +132,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Get(
-     *     path="{L5_SWAGGER_CONST_API_BASE_PATH}/clients/{client}",
+     *     path="/monteiro.daisa/v1/clients/{client}",
      *     summary="Get a specific client",
      *     tags={"Clients"},
      *     security={{"bearerAuth":{}}},
@@ -171,7 +171,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Put(
-     *     path="{L5_SWAGGER_CONST_API_BASE_PATH}/clients/{client}",
+     *     path="/monteiro.daisa/v1/clients/{client}",
      *     summary="Update a client",
      *     tags={"Clients"},
      *     security={{"bearerAuth":{}}},
@@ -212,7 +212,7 @@ class ClientController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="{L5_SWAGGER_CONST_API_BASE_PATH}/clients/{client}",
+     *     path="/monteiro.daisa/v1/clients/{client}",
      *     summary="Delete a client",
      *     tags={"Clients"},
      *     security={{"bearerAuth":{}}},
