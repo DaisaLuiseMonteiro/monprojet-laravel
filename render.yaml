@@ -3,8 +3,8 @@ services:
     name: monprojet-laravel-13
     runtime: docker
     buildCommand: docker build -t monprojet-laravel .
-    startCommand: docker run -p 10000:10000 monprojet-laravel
-    envVars:
+    startCommand: docker run -p 8000:8000 monprojet-laravel
+y    envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
