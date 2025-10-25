@@ -54,7 +54,8 @@ RUN echo "APP_NAME=Laravel" > .env && \
     echo "" >> .env && \
     echo "CACHE_DRIVER=file" >> .env && \
     echo "SESSION_DRIVER=file" >> .env && \
-    echo "QUEUE_CONNECTION=sync" >> .env
+    echo "QUEUE_CONNECTION=sync" >> .env && \
+    echo "L5_SWAGGER_CONST_HOST=https://monprojet-laravel-13.onrender.com" >> .env
 
 # Changer les permissions du fichier .env pour l'utilisateur laravel
 RUN chown laravel:laravel .env
@@ -64,8 +65,7 @@ USER laravel
 RUN php artisan key:generate --force && \
     php artisan config:cache && \
     php artisan route:cache && \
-    php artisan view:cache && \
-    php artisan l5-swagger:generate 
+    php artisan view:cache
 USER root
 
 # Copier le script d'entrée
