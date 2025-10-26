@@ -10,9 +10,8 @@ return [
     |
     */
 
+
     'prefix' => 'v1',
-
     'version' => 'v1',
-
-    'domain' => 'monteiro.daisa',
+    'domain' => 'monteiro.daisa/v1', 
 ];
