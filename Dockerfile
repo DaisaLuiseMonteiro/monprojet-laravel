@@ -35,44 +35,15 @@ RUN mkdir -p storage/framework/{cache,data,sessions,testing,views} \
     && chown -R laravel:laravel /var/www/html \
     && chmod -R 775 storage bootstrap/cache
 
-# Créer un fichier .env minimal pour le build (sera remplacé à l'exécution)
-RUN echo "APP_NAME=Laravel" > .env && \
-    echo "APP_ENV=production" >> .env && \
-    echo "APP_KEY=" >> .env && \
-    echo "APP_DEBUG=false" >> .env && \
-    echo "APP_URL=http://localhost" >> .env && \
-    echo "" >> .env && \
-    echo "LOG_CHANNEL=stack" >> .env && \
-    echo "LOG_LEVEL=error" >> .env && \
-    echo "" >> .env && \
-    echo "DB_CONNECTION=pgsql" >> .env && \
-    echo "DB_HOST=\${DB_HOST}" >> .env && \
-    echo "DB_PORT=\${DB_PORT}" >> .env && \
-    echo "DB_DATABASE=\${DB_DATABASE}" >> .env && \
-    echo "DB_USERNAME=\${DB_USERNAME}" >> .env && \
-    echo "DB_PASSWORD=\${DB_PASSWORD}" >> .env && \
-    echo "" >> .env && \
-    echo "CACHE_DRIVER=file" >> .env && \
-    echo "SESSION_DRIVER=file" >> .env && \
-    echo "QUEUE_CONNECTION=sync" >> .env
-
-# Changer les permissions du fichier .env pour l'utilisateur laravel
-RUN chown laravel:laravel .env
-
-# Générer seulement la clé d'application pendant le build
-USER laravel
-RUN php artisan key:generate --force
-USER root
-
-# Copier le script d'entrée
+# Configurer l'entrypoint runtime
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Passer à l'utilisateur non-root
+# Passer à l'utilisateur non-root (les commandes runtime seront lancées via l'entrypoint)
 USER laravel
 
 # Exposer le port 8000
 EXPOSE 8000
 
-# Commande par défaut
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
