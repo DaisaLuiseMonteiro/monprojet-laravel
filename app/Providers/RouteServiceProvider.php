@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('api')
-                ->prefix('monteiro.daisa')
+                ->prefix(config('api.domain'))
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')

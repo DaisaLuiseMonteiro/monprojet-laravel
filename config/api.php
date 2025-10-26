@@ -14,5 +14,5 @@ return [
 
     'version' => 'v1',
 
-    'domain' => 'api',
+    'domain' => 'monteiro.daisa',
 ];
